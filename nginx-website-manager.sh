@@ -9,7 +9,7 @@ if ! [ -x "$(command -v apt)" ]; then
 echo "* Votre système d'exploitation n'est malheureusement pas compatible avec l'installateur."
     exit 1
 fi
-echo -e "\nQue voulez vous faire ?\n\n1) Installer un hébergement web\n2) Installer/Gérer un certificat SSL Let's Encrypt\n3) Installer un hébergement web\n4) Supprimer un hébergement web\n"
+echo -e "\nQue voulez vous faire ?\n\n1) Installer un hébergement web\n2) Installer/Gérer un certificat SSL Let's Encrypt\n3) Renouveller SSL\n4) Supprimer un hébergement web\n"
 read -rp "(1/4) ~" -e qvvf
 
 if [ $qvvf == "1" ]; then
