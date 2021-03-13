@@ -96,5 +96,4 @@ elif [ $qvvf == "4" ]; then
             sleep 3
         fi
         certbot --force-renewal -d $domain
-        echo -e "\n****************************Renouvellement SSL terminée !****************************\n* 
- fi
+        echo -e "\n****************************Renouvellement SSL terminée !****************************\n*
