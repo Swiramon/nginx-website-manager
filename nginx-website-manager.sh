@@ -9,8 +9,8 @@ if ! [ -x "$(command -v apt)" ]; then
 echo "* Votre système d'exploitation n'est malheureusement pas compatible avec l'installateur."
     exit 1
 fi
-echo -e "\nQue voulez vous faire ?\n\n1) Installer un hébergement web\n2) Installer/Gérer un certificat SSL Let's Encrypt\n3) Supprimer un hébergement web\n"
-read -rp "(1/3) ~" -e qvvf
+echo -e "\nQue voulez vous faire ?\n\n1) Installer un hébergement web\n2) Installer/Gérer un certificat SSL Let's Encrypt\n3) Installer un hébergement web\n4) Supprimer un hébergement web\n"
+read -rp "(1/4) ~" -e qvvf
 
 if [ $qvvf == "1" ]; then
 
@@ -86,3 +86,15 @@ elif [ $qvvf == "3" ]; then
 else
     echo "Ceci n'est pas une option. Fin du programme."
 fi
+elif [ $qvvf == "4" ]; then
+    echo -e "\nQue voulez vous faire ?\n\n1) Gérer/Créer un certificat SSL\n2) Retirer un certificat SSL\n"
+    read -rp "(1/2) ~" -e qf
+    if [ $qf == "1" ]; then
+        read -rp "Quel domaine/sous-domaine souhaitez vous renouveller ? " -e domain
+        if ! [ -x "$(command -v certbot)" ]; then
+            echo -e "Certbot est installé. Renouvellement en cours de votre certificat SSL..."
+            sleep 3
+        fi
+        certbot --force-renewal -d $domain
+        echo -e "\n****************************Renouvellement SSL terminée !****************************\n* 
+ fi
